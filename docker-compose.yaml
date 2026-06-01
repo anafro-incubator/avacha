@@ -1,7 +1,6 @@
 services:
     web:
         image: nginx:latest
-        container_name: web
         ports:
             - "80:80"
         volumes:
@@ -9,8 +8,6 @@ services:
             - ./:/var/www/html
 
     app:
-        container_name: app
-        build:
-            dockerfile: Dockerfile
+        build: .
         volumes:
             - ./:/var/www/html/
