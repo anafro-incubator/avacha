@@ -1,5 +1,0 @@
-<body class=""
-    foreach ($array as $element) {
-        <p
-            =$array
-    }
