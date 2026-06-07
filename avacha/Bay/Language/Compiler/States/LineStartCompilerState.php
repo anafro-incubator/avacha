@@ -30,6 +30,11 @@ class LineStartCompilerState extends CompilerState
             return;
         }
 
+        if ($iterable->is('=')) {
+            $compiler->enterState(new PhpEchoCompilerState($this->parent));
+            return;
+        }
+
         $compiler->enterState(new PhpCompilerState($this->parent));
     }
 }
