@@ -7,6 +7,7 @@ namespace Avacha\Bay\Language\Compiler;
 use Avacha\Bay\Language\Compiler\Exceptions\StatelessCompilerException;
 use Avacha\Bay\Language\Compiler\States\RootCompilerState;
 use Avacha\Bay\Language\Compiler\States\CompilerState;
+use Avacha\Bay\Language\Tokens\Token;
 use Avacha\Support\Strings\ControlledCharacterIterator;
 use SplStack;
 
@@ -42,7 +43,7 @@ final class Compiler
         return $this->states->top();
     }
 
-    public function compile(string $template): string
+    public function compileToToken(string $template): Token
     {
         $initial = new RootCompilerState();
         $iterator = new ControlledCharacterIterator($template);
@@ -55,7 +56,12 @@ final class Compiler
         }
 
         $root = $initial->finish($this);
-        return (string) $root;
+        return $root;
+    }
+
+    public function compile(string $template): string
+    {
+        return (string) $this->compileToToken($template);
     }
 
     private function ensureStateful(): void

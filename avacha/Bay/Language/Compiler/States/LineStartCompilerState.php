@@ -35,6 +35,11 @@ class LineStartCompilerState extends CompilerState
             return;
         }
 
+        if ($iterable->is('@')) {
+            $compiler->enterState(new IncludeCompilerState($this->parent));
+            return;
+        }
+
         $compiler->enterState(new PhpCompilerState($this->parent));
     }
 }

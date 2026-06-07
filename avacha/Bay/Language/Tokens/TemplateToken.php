@@ -28,9 +28,6 @@ class TemplateToken extends Token implements HasTokenChildren
 
     public function __toString()
     {
-        $bay = implode("\n", $this->children);
-        return "<?php
-            $bay
-        ?>";
+        return implode("\n", $this->children);
     }
 }

@@ -14,7 +14,7 @@ function template(string $name, array $parameters = []): string
     $template = $compiler->compile($bay);
 
     ob_start();
-    eval('?>' . $template);
+    eval($template);
     $html = ob_get_contents();
     ob_clean();
 

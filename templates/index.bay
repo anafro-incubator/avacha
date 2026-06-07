@@ -1,13 +1,4 @@
-<html
-    <head>
-    <body
-        ="Hello, world!"
-
-        foreach ($fruits as $fruit)
-        {
-            <p
-                =$fruit
-            >
-        }
-    >
+@header
+<p
+    = "Hello world!";
 >
