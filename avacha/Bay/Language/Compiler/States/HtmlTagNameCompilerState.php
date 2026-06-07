@@ -22,12 +22,20 @@ class HtmlTagNameCompilerState extends CompilerState
     #[Override]
     public function act(Compiler $compiler, ControlledCharacterIterable $iterable): void
     {
-        $tagName = $iterable->collectUntil(" ", "\n", "\r");
+        $tagName = $iterable->collectUntil(" ", "\n", "\r", ">");
         if (! preg_match(static::HTML_TAG_NAME_REGEX, $tagName)) {
             throw new BaySyntaxException("'$tagName' is not a valid HTML tag name.");
         }
 
         $html = new HtmlToken($tagName);
+
+        if ($iterable->is('>')) {
+            $this->parent->appendChild($html);
+            $iterable->next();
+            $compiler->quitCurrentState();
+            return;
+        }
+
         $compiler->replaceState(new HtmlAttributesCompilerState($this->parent, $html));
     }
 }
