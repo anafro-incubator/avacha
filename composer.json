@@ -17,11 +17,16 @@
         },
         "files": [
             "avacha/Env/env.php",
-            "avacha/Templating/templates.php",
             "avacha/Filesystem/paths.php",
             "avacha/Filesystem/dirs.php",
             "avacha/Assets/assets.php",
-            "avacha/Http/responses.php"
+            "avacha/Http/responses.php",
+            "avacha/Bay/template.php",
+            "avacha/Support/Strings/mb_charat.php",
+            "avacha/Support/Sugar/varargs_1ormore_merge.php",
+            "avacha/Support/Debug/sniff.php",
+            "avacha/Support/Reflection/refl_simpleclassname.php",
+            "avacha/Support/Arrays/array_areduce.php"
         ]
     },
     "require-dev": {

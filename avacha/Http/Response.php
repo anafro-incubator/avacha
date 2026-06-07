@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Avacha\Http;
 
-use function Avacha\Templating\render_template;
+use function Avacha\Bay\template;
 
 class Response
 {
@@ -89,9 +91,7 @@ class Response
         private readonly string $content = '',
         private readonly int    $status = Response::OK,
         private readonly array  $headers = [],
-    )
-    {
-    }
+    ) {}
 
     private static function getStatusText(int $code): string
     {
@@ -100,23 +100,20 @@ class Response
 
     public function send(): void
     {
-        foreach ($this->headers as $header)
-        {
+        foreach ($this->headers as $header) {
             header($header);
         }
 
         http_response_code($this->status);
 
-        if ($this->content === '')
-        {
-            echo render_template('error', [
+        if ($this->content === '') {
+            echo template('error', [
                 'status' => $this->status,
                 'text' => self::getStatusText($this->status),
             ]);
-        }
-        else
-        {
+        } else {
             echo $this->content;
         }
     }
 }
+
