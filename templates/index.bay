@@ -1,13 +1,12 @@
 <html
-    <head
-    >
+    <head>
     <body
-        echo "Hello, world!";
+        ="Hello, world!"
 
-        foreach($fruits as $fruit)
+        foreach ($fruits as $fruit)
         {
-            <p style="color: red;"
-                echo $fruit . " is pretty tasty";
+            <p
+                =$fruit
             >
         }
     >
